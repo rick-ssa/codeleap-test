@@ -1,10 +1,13 @@
 
 import './App.css';
+import InputText from './components/InputText';
 import Post from './components/Post';
 
 function App() {
   return (
     <div className="App">
+      <InputText title={'Title'} placeholder='Title' value='Rick'/>
+      <InputText title={'Title'} placeholder='Title' value='Rick' multline/>
       <Post 
         title={'This is a test'} 
         text={'loren ipsum kljfkld jkl fjdskl jfklds jflkds  jfklds jflk dsjflk dsjfkl sdjlkf dsjlkf jsdl jfsdl fjksld fjlkds jfdslk jflsdk j'}  

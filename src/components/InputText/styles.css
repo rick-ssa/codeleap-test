@@ -1,0 +1,40 @@
+.input_text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input_text__label {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.input_text > input,
+.input_text > textarea {
+  border: 1px solid #777;
+  background-color: white;
+  border-radius: 4px;
+  align-self: stretch;
+  margin: 5px 0;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.input_text > input:focus,
+.input_text > textarea:focus {
+  outline: none;
+}
+
+.input_text > input {
+  padding: 0 10px;
+  height: 28px;
+}
+
+.input_text > textarea {
+  padding: 10px;
+  height: 58px;
+}
