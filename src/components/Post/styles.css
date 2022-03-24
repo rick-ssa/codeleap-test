@@ -1,0 +1,44 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #999;
+  background-color: white;
+}
+
+.post__header {
+  display: flex;
+  background-color: black;
+  height: 70px;
+  padding: 0 30px;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post__title {
+  font-size: 22px;
+}
+
+.post__buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22.5px;
+  width: 65px;
+}
+
+.post__main {
+  padding: 0 30px;
+}
+
+.post__info {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 18px;
+  padding: 15px 0;
+}
+
+.post__text {
+  display: flex;
+  padding: 15px 0 30px;
+}
