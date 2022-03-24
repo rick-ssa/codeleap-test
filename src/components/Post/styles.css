@@ -17,6 +17,9 @@
 
 .post__title {
   font-size: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .post__buttons {
@@ -40,5 +43,8 @@
 
 .post__text {
   display: flex;
-  padding: 15px 0 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: left;
 }
