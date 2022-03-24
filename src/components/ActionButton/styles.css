@@ -1,8 +1,6 @@
 .action_button {
   width: 111px;
   height: 33px;
-  border: none;
   font-size: 16px;
   font-weight: bold;
-  text-transform: uppercase;
 }
