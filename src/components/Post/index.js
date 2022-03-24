@@ -1,6 +1,5 @@
 import './styles.css'
-import {FiEdit} from 'react-icons/fi'
-import {MdDeleteForever} from 'react-icons/md'
+import {FiEdit, FiTrash2} from 'react-icons/fi'
 
 const Post = ({title, text, time, creator}) => {
     return (
@@ -12,7 +11,7 @@ const Post = ({title, text, time, creator}) => {
                 </div>
 
                 <div className="post__buttons">
-                    <MdDeleteForever />
+                    <FiTrash2 />
                     <FiEdit />
                 </div>
 
