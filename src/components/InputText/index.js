@@ -1,7 +1,7 @@
 
 import './styles.css'
 
-const InputText = ({title, placeholder, value, multline = false}) => {
+const InputText = ({title, placeholder, value, onChange, multline = false}) => {
     return (
         <div className='input_text'>
             <label className='input_text__label'>{title}</label>
@@ -11,6 +11,7 @@ const InputText = ({title, placeholder, value, multline = false}) => {
                 <textarea 
                     placeholder={placeholder}
                     value = {value}
+                    onChange = {onChange}
                 />
                     
                 :
@@ -19,6 +20,7 @@ const InputText = ({title, placeholder, value, multline = false}) => {
                     type='text' 
                     placeholder={placeholder}
                     value = {value}
+                    onChange = {onChange}
                 />
             }
         
