@@ -1,0 +1,18 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 25px;
+  border: 1px solid #ccc;
+}
+
+.dialog__title {
+  display: flex;
+  font-size: 22px;
+  margin-bottom: 35px;
+}
+
+.dialog__buttons {
+  display: flex;
+  justify-content: flex-end;
+}
