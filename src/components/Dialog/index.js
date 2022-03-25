@@ -1,7 +1,15 @@
 import ActionButton from '../ActionButton'
 import './styles.css'
 
-const Dialog = ({title, children, buttons, marginLeft = 0, marginTop = 0, marginRight = 0, marginBottom = 0 }) => {
+const Dialog = ({
+    title, 
+    children, 
+    buttons, 
+    marginLeft = 0, 
+    marginTop = 0, 
+    marginRight = 0, 
+    marginBottom = 0 
+}) => {
     return (
         <div 
             className="dialog"
