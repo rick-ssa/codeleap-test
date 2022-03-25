@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import Dialog from '../../components/Dialog'
 import InputText from '../../components/InputText'
+import Modal from '../../components/Modal'
 import Post from '../../components/Post'
 import './styles.css'
 
 const Main = ()=> {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+    const [modalType, setModalType] = useState('')
 
     return (
         <div className="main">
@@ -40,6 +42,62 @@ const Main = ()=> {
                     />
                 </div>
             </div>
+
+            {
+                modalType
+
+                &&
+
+                <Modal >
+
+                    {
+                        modalType === 'delete' 
+
+                        ?
+
+                        <Dialog 
+                            title='Are you sure you want to delete this item?'
+                            buttons={[
+                                {
+                                    text: 'Cancel',
+                                    simple: true,
+                                    onClick: ()=>console.log('cancel'),
+                                    marginRight: '16px'
+                                },
+                                {
+                                    text: 'OK',
+                                    simple: true,
+                                    onClick: ()=>console.log('ok')
+                                }
+                            ]}
+                        />
+
+                        :
+
+                        <Dialog
+                            title = 'Edit Item'
+                            buttons={[{
+                                text: 'save',
+                                active: true,
+                                onClick: ()=>{console.log('save')}
+                            }]}
+                        >
+                            <InputText 
+                                title = 'Title'
+                                placeholder='Title'
+                            />
+
+                            <InputText 
+                                title = 'Content'
+                                placeholder='Content'
+                                multline
+                            />
+                        </Dialog>
+                    }
+                </Modal>
+                
+            }
+            
         </div>
     )
 }
