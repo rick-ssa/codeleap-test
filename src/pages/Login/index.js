@@ -13,18 +13,20 @@ const Login = () => {
 
     return (
         <div className='login'>
-            <Dialog
-                width='500px'
-                title='Welcome to CodeLeap network!'
-                buttons={[{text:'enter', active: text !== '', simple: false, onClick:''}]}
-            >
-                <InputText 
-                    title='Please enter your username'
-                    placeholder='John Doe'
-                    onChange =  {handleOnChange}
-                    value = {text}
-                />
-            </Dialog>
+            <div className="login__content">
+                <Dialog
+                    maxWidth={'500px'}
+                    title='Welcome to CodeLeap network!'
+                    buttons={[{text:'enter', active: text !== '', simple: false, onClick:''}]}
+                >
+                    <InputText 
+                        title='Please enter your username'
+                        placeholder='John Doe'
+                        onChange =  {handleOnChange}
+                        value = {text}
+                    />
+                </Dialog>
+            </div>
         </div>
     )
 }
