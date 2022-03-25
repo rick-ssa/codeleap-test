@@ -1,6 +1,6 @@
 import './styles.css'
 
-const ActionButton = ({text, onClick ,active = false, simple = false}) => {
+const ActionButton = ({text, onClick, marginRight = 0, active = false, simple = false}) => {
     return (
         <button
             className='action_button'
@@ -12,7 +12,8 @@ const ActionButton = ({text, onClick ,active = false, simple = false}) => {
                     backgroundColor: 'transparent',
                     color: 'black',
                     cursor: 'pointer',
-                    border: '1px solid black'
+                    border: '1px solid black',
+                    marginRight
                 }
 
                 :
@@ -23,6 +24,7 @@ const ActionButton = ({text, onClick ,active = false, simple = false}) => {
                     cursor: active ? 'pointer' : 'default',
                     border: 'none',
                     textTransform: 'uppercase',
+                    marginRight
                 }
             }
             onClick = {(simple || active) && onClick}

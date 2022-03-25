@@ -18,6 +18,7 @@ const Dialog = ({title, children, buttons}) => {
                             text={button.text}
                             active={button.active}
                             simple={button.simple}
+                            marginRight={button.marginRight}
                             onClick={button.onClick}
                         />
                     )

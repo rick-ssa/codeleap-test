@@ -11,7 +11,7 @@ function App() {
       <Dialog 
         title = 'Welcome to CodeLeap network!'
         buttons = {[
-          {text:'enter', active:true, simple: false, onClick:()=>alert('hello')},
+          {text:'enter', active:true, simple: false, onClick:()=>alert('hello'), marginRight: '16px'},
           {text:'sair', active:true, simple: false, onClick:()=>alert('hi')},
         ]}
       >
