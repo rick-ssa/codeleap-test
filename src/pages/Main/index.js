@@ -20,7 +20,7 @@ const Main = ()=> {
                     >
                         <InputText 
                             title='Title'
-                            placeholder='Hello world'
+                            placeholder='Type something'
                             onChange = {(e) => {setTitle(e.target.value)}}
                         />
                         <InputText 
