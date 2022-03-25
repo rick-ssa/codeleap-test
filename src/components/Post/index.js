@@ -1,9 +1,21 @@
 import './styles.css'
 import {FiEdit, FiTrash2} from 'react-icons/fi'
 
-const Post = ({title, text, time, creator}) => {
+const Post = ({
+    title, 
+    text, 
+    time, 
+    creator,
+    marginLeft = 0, 
+    marginTop = 0, 
+    marginRight = 0, 
+    marginBottom = 0 
+}) => {
     return (
-        <div className="post">
+        <div 
+            className="post"
+            style={{marginTop, marginRight, marginBottom, marginLeft}}
+        >
             <header className='post__header'>
 
                 <div className="post__title">
