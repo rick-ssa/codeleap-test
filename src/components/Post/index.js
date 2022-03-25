@@ -6,6 +6,7 @@ const Post = ({
     text, 
     time, 
     creator,
+    showControls,
     marginLeft = 0, 
     marginTop = 0, 
     marginRight = 0, 
@@ -22,10 +23,16 @@ const Post = ({
                     {title}
                 </div>
 
-                <div className="post__buttons">
-                    <FiTrash2 />
-                    <FiEdit />
-                </div>
+                {
+                    showControls 
+                    
+                    && 
+
+                    <div className="post__buttons">
+                        <FiTrash2 />
+                        <FiEdit />
+                    </div>
+                }
 
             </header>
 
