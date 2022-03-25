@@ -27,7 +27,7 @@ const ActionButton = ({text, onClick, marginRight = 0, active = false, simple = 
                     marginRight
                 }
             }
-            onClick = {(simple || active) && onClick}
+            onClick = {(simple || active) ? onClick : undefined}
         >
             {text}
         </button>
