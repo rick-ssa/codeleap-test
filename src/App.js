@@ -1,11 +1,19 @@
 
 import './App.css';
+import Main from './pages/Main';
 import Singup from './pages/Singup';
 
 function App() {
+  const login = true
   return (
     <div className="App">
-      <Singup />
+      {
+        login ?
+          <Main />
+        :
+          <Singup />
+
+      }
     </div>
   );
 }

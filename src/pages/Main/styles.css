@@ -1,0 +1,33 @@
+.main {
+  min-height: 100vh;
+  animation: show 0.5s forwards;
+  opacity: 0;
+}
+
+.main__container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.main__header {
+  display: flex;
+  background-color: black;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  height: 80px;
+  padding: 0 38px;
+  align-items: center;
+}
+
+.main__content {
+  display: flex;
+  flex-direction: column;
+  padding: 44px 38px;
+}
+
+.main_content > .dialog {
+  margin: 100px;
+}
