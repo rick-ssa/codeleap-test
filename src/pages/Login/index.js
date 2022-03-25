@@ -17,7 +17,7 @@ const Login = () => {
                 <Dialog
                     maxWidth={'500px'}
                     title='Welcome to CodeLeap network!'
-                    buttons={[{text:'enter', active: text !== '', simple: false, onClick:''}]}
+                    buttons={[{text:'enter', active: text !== '', simple: false, onClick:()=>console.log('loged')}]}
                 >
                     <InputText 
                         title='Please enter your username'
