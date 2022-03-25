@@ -4,7 +4,7 @@ import InputText from '../../components/InputText'
 import './styles.css'
 
 
-const Login = () => {
+const Singup = () => {
     const [text, setText] = useState('')
 
     const handleOnChange = (event) => {
@@ -12,8 +12,8 @@ const Login = () => {
     }
 
     return (
-        <div className='login'>
-            <div className="login__content">
+        <div className='singup'>
+            <div className="singup__content">
                 <Dialog
                     title='Welcome to CodeLeap network!'
                     buttons={[{text:'enter', active: text !== '', simple: false, onClick:()=>console.log('loged')}]}
@@ -30,4 +30,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Singup
