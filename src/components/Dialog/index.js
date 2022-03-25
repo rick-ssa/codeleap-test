@@ -1,10 +1,11 @@
 import ActionButton from '../ActionButton'
 import './styles.css'
 
-const Dialog = ({title, children, buttons }) => {
+const Dialog = ({title, children, buttons, marginLeft = 0, marginTop = 0, marginRight = 0, marginBottom = 0 }) => {
     return (
         <div 
             className="dialog"
+            style={{marginTop, marginRight, marginBottom, marginLeft}}
         >
             <h2 className="dialog__title">
                 {title}
