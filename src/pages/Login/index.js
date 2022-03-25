@@ -15,7 +15,6 @@ const Login = () => {
         <div className='login'>
             <div className="login__content">
                 <Dialog
-                    maxWidth={'500px'}
                     title='Welcome to CodeLeap network!'
                     buttons={[{text:'enter', active: text !== '', simple: false, onClick:()=>console.log('loged')}]}
                 >
