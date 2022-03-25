@@ -7,6 +7,7 @@ const Login = () => {
     return (
         <div className='login'>
             <Dialog
+                width='500px'
                 title='Welcome to CodeLeap network!'
                 buttons={[{text:'enter', active: true, simple: false, onClick:''}]}
             >

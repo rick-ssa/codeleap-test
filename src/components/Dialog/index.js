@@ -1,9 +1,12 @@
 import ActionButton from '../ActionButton'
 import './styles.css'
 
-const Dialog = ({title, children, buttons}) => {
+const Dialog = ({title, children, buttons, width }) => {
     return (
-        <div className="dialog">
+        <div 
+            className="dialog"
+            style = {{width}}
+        >
             <h2 className="dialog__title">
                 {title}
             </h2>
