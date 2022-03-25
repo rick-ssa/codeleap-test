@@ -1,6 +1,8 @@
 .login {
   width: 100vw;
   height: 100vh;
+  animation: show 0.5s forwards;
+  opacity: 0;
 }
 
 .login__content {
