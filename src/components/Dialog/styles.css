@@ -15,4 +15,5 @@
 .dialog__buttons {
   display: flex;
   justify-content: flex-end;
+  padding-top: 25px;
 }
