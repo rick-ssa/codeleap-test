@@ -1,5 +1,6 @@
 import './styles.css'
 import {FiEdit, FiTrash2} from 'react-icons/fi'
+import {transformTime} from '../../utils'
 
 const Post = ({
     id,
@@ -47,7 +48,7 @@ const Post = ({
                     </div>
 
                     <div className="post__info__time">
-                        {time}
+                        {transformTime(time)}
                     </div>
                 </div>
 
