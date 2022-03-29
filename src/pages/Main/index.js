@@ -18,7 +18,10 @@ const Main = ({posts, user, dispatch})=> {
             username: user,
             content,
         }
-
+                
+        setContent('')
+        setTitle('')
+        
         dispatch(addPostAction(post))
     }
 
@@ -41,11 +44,13 @@ const Main = ({posts, user, dispatch})=> {
                             title='Title'
                             placeholder='Type something'
                             onChange = {(e) => {setTitle(e.target.value)}}
+                            value = {title}
                         />
                         <InputText 
                             title='Content'
                             placeholder='Content here'
                             onChange={(e) => {setContent(e.target.value)}}
+                            value = {content}
                             multline
                         />
                     </Dialog>
