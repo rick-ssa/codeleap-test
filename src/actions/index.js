@@ -1,26 +1,26 @@
-const SINGUP = 'SINGUP'
-const ADD_POST = 'ADD_POST'
-const DELETE_POST = 'DELETE_POST'
-const EDIT_POST = 'EDIT_POST'
+const SINGUP = 'USER/SINGUP'
+const ADDED_POST = 'POST/ADDED_POST'
+const DELETED_POST = 'POST/DELETED_POST'
+const EDITED_POST = 'POST/EDITED_POST'
 
 const singupAction = (user) => ({
     type: SINGUP,
     payload: {user}
 })
 
-const addPost = (newPost) => ({
-    type: ADD_POST,
+const addPostAction = (newPost) => ({
+    type: ADDED_POST,
     payload: {newPost}
 })
 
-const deletePost = (postId) =>({
-    type: DELETE_POST,
+const deletePostAction = (postId) =>({
+    type: DELETED_POST,
     payload: {postId}
 })
 
-const editPost = (newPost) => ({
-    type: EDIT_POST,
+const editPostAction = (newPost) => ({
+    type: EDITED_POST,
     payload: {newPost}
 })
 
-export {singupAction, addPost, deletePost, editPost}
+export {singupAction, addPostAction, deletePostAction, editPostAction, SINGUP, ADDED_POST, DELETED_POST, EDITED_POST}
