@@ -4,10 +4,10 @@ import InputText from '../../components/InputText'
 import Modal from '../../components/Modal'
 import Post from '../../components/Post'
 import './styles.css'
-import {connect, MapStateToProps} from 'react-redux'
+import {connect} from 'react-redux'
 import {addPostAction} from '../../actions'
 
-const Main = ({posts, dispatch})=> {
+const Main = ({posts, user, dispatch})=> {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [modalType, setModalType] = useState('')
@@ -15,7 +15,7 @@ const Main = ({posts, dispatch})=> {
     const handleCreatePost = () => {
         const post = {
             title,
-            username: 'me_myself',
+            username: user,
             content,
         }
 
@@ -126,8 +126,8 @@ const Main = ({posts, dispatch})=> {
 }
 
 const mapStateToProps = (state) => {
-    const {posts} = state
-    return ({posts})
+    const {posts, user} = state
+    return ({posts,user})
 }
 
 export default connect(mapStateToProps)(Main)
