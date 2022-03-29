@@ -8,10 +8,16 @@ const singupAction = (user) => ({
     payload: {user}
 })
 
-const addPostAction = (newPost) => ({
-    type: ADDED_POST,
-    payload: {newPost}
-})
+const addPostAction = (newPost) => {
+    const created_datetime = new Date()
+    const id = created_datetime.getTime()
+    return ({
+        type: ADDED_POST,
+        payload: {
+            newPost: {...newPost, id, created_datetime}
+        }
+    })
+}
 
 const deletePostAction = (postId) =>({
     type: DELETED_POST,
