@@ -4,11 +4,23 @@ import InputText from '../../components/InputText'
 import Modal from '../../components/Modal'
 import Post from '../../components/Post'
 import './styles.css'
+import {connect, MapStateToProps} from 'react-redux'
+import {addPostAction} from '../../actions'
 
-const Main = ()=> {
+const Main = ({posts, dispatch})=> {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [modalType, setModalType] = useState('')
+
+    const handleCreatePost = () => {
+        const post = {
+            title,
+            username: 'me_myself',
+            content,
+        }
+
+        dispatch(addPostAction(post))
+    }
 
     return (
         <div className="main">
@@ -18,7 +30,12 @@ const Main = ()=> {
                     <Dialog 
                         marginBottom='34px'
                         title="What's on your mind?"
-                        buttons = {[{text:'create', active: title && content, simple:false, onClick:()=>{console.log('create')}}]}
+                        buttons = {[{
+                            text:'create', 
+                            active: title && content, 
+                            simple:false, 
+                            onClick: handleCreatePost
+                        }]}
                     >
                         <InputText 
                             title='Title'
@@ -33,13 +50,21 @@ const Main = ()=> {
                         />
                     </Dialog>
 
-                    <Post
-                        title='My First Post at CodeLeap Network!'
-                        creator='@Victor'
-                        time='25 minutes ago'
-                        text = 'Curabitur suscipit suscipit tellus. Phasellus consectetuer vestibulum elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas egestas arcu quis ligula mattis placerat. Duis vel nibh at velit scelerisque suscipit.                        Duis lobortis massa imperdiet quam. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Fusce a quam. Nullam vel sem. Nullam cursus lacinia erat.'
-                        marginBottom='34px'
-                    />
+                    {console.log(posts)}
+
+                    {
+                        posts.map(post=>(
+                            <Post
+                                key = {post.id}
+                                id = {post.id}
+                                title ={post.title}
+                                creator ={`@${post.username}`}
+                                time = {post.created_datetime.toString()}
+                                text = {post.content}
+                                marginBottom = '34px'
+                            />
+                        ))
+                    }
                 </div>
             </div>
 
@@ -102,4 +127,9 @@ const Main = ()=> {
     )
 }
 
-export default Main
+const mapStateToProps = (state) => {
+    const {posts} = state
+    return ({posts})
+}
+
+export default connect(mapStateToProps)(Main)
