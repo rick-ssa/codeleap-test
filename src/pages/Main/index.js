@@ -59,6 +59,7 @@ const Main = ({posts, user, dispatch})=> {
                                 creator ={`@${post.username}`}
                                 time = {post.created_datetime}
                                 text = {post.content}
+                                showControls = {user === post.username}
                                 marginBottom = '34px'
                             />
                         ))
