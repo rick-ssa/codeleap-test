@@ -50,8 +50,6 @@ const Main = ({posts, dispatch})=> {
                         />
                     </Dialog>
 
-                    {console.log(posts)}
-
                     {
                         posts.map(post=>(
                             <Post
