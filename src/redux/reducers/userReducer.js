@@ -1,4 +1,4 @@
-import {SINGUP} from '../actions'
+import {SINGUP} from '../../actions'
 
 const userReducer = (state='', action) => {
     if(action.type === SINGUP) {
