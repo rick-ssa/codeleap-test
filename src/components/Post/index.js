@@ -2,6 +2,7 @@ import './styles.css'
 import {FiEdit, FiTrash2} from 'react-icons/fi'
 
 const Post = ({
+    id,
     title, 
     text, 
     time, 
@@ -14,6 +15,7 @@ const Post = ({
 }) => {
     return (
         <div 
+            id = {id}
             className="post"
             style={{marginTop, marginRight, marginBottom, marginLeft}}
         >
