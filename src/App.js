@@ -4,11 +4,11 @@ import Main from './pages/Main';
 import Singup from './pages/Singup';
 
 function App() {
-  const login = true
+  const logged = false
   return (
     <div className="App">
       {
-        login ?
+        logged ?
           <Main />
         :
           <Singup />
