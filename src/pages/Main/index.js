@@ -57,7 +57,7 @@ const Main = ({posts, user, dispatch})=> {
                                 id = {post.id}
                                 title ={post.title}
                                 creator ={`@${post.username}`}
-                                time = {post.created_datetime.toString()}
+                                time = {post.created_datetime}
                                 text = {post.content}
                                 marginBottom = '34px'
                             />
