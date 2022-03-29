@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import Dialog from '../../components/Dialog'
 import InputText from '../../components/InputText'
+import {connect} from 'react-redux'
+import {singupAction} from '../../actions'
 import './styles.css'
 
 
-const Singup = () => {
+const Singup = ({dispatch}) => {
     const [text, setText] = useState('')
 
     const handleOnChange = (event) => {
@@ -16,7 +18,12 @@ const Singup = () => {
             <div className="singup__content">
                 <Dialog
                     title='Welcome to CodeLeap network!'
-                    buttons={[{text:'enter', active: text !== '', simple: false, onClick:()=>console.log('loged')}]}
+                    buttons={[{
+                        text:'enter', 
+                        active: text !== '', 
+                        simple: false, 
+                        onClick: ()=>dispatch(singupAction(text))
+                    }]}
                 >
                     <InputText 
                         title='Please enter your username'
@@ -30,4 +37,4 @@ const Singup = () => {
     )
 }
 
-export default Singup
+export default connect()(Singup)
