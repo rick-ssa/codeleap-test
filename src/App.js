@@ -2,9 +2,10 @@
 import './App.css';
 import Main from './pages/Main';
 import Singup from './pages/Singup';
+import {connect, MapStateToProps} from 'react-redux'
 
-function App() {
-  const logged = false
+function App({user}) {
+  const logged = Boolean(user)
   return (
     <div className="App">
       {
@@ -18,4 +19,9 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  const {user} =  state
+  return ({user})
+}
+
+export default connect(mapStateToProps) (App);
