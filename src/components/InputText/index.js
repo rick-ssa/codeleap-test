@@ -1,7 +1,7 @@
 
 import './styles.css'
 
-const InputText = ({title, placeholder, value, onChange, multline = false}) => {
+const InputText = ({title, placeholder, value, onChange, onKeyUp, multline = false}) => {
     return (
         <div className='input_text'>
             <label className='input_text__label'>{title}</label>
@@ -12,6 +12,7 @@ const InputText = ({title, placeholder, value, onChange, multline = false}) => {
                     placeholder={placeholder}
                     value = {value}
                     onChange = {onChange}
+                    onKeyUp = {onKeyUp}
                 />
                     
                 :
@@ -21,6 +22,7 @@ const InputText = ({title, placeholder, value, onChange, multline = false}) => {
                     placeholder={placeholder}
                     value = {value}
                     onChange = {onChange}
+                    onKeyUp = {onKeyUp}
                 />
             }
         
