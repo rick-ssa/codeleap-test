@@ -13,6 +13,12 @@ const Singup = ({dispatch}) => {
         setText(event.target.value)
     }
 
+    const handleOnKeyUp = (event) => {
+        if(event.code === 'Enter' || event.key === 'Enter') {
+            dispatch(singupAction(text))
+        }
+    }
+
     return (
         <div className='singup'>
             <div className="singup__content">
@@ -30,6 +36,7 @@ const Singup = ({dispatch}) => {
                         placeholder='John Doe'
                         onChange =  {handleOnChange}
                         value = {text}
+                        onKeyUp = {handleOnKeyUp}
                     />
                 </Dialog>
             </div>
