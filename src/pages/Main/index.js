@@ -98,7 +98,11 @@ const Main = ({posts, user, dispatch})=> {
                     </Dialog>
 
                     {
-                        posts.map(post=>(
+                        posts
+                        .sort((first, second)=>{
+                            return second.created_datetime.getTime() - first.created_datetime.getTime()
+                        })
+                        .map(post=>(
                             <Post
                                 key = {post.id}
                                 id = {post.id}
