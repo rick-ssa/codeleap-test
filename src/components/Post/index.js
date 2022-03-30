@@ -12,7 +12,9 @@ const Post = ({
     marginLeft = 0, 
     marginTop = 0, 
     marginRight = 0, 
-    marginBottom = 0 
+    marginBottom = 0,
+    onDelete,
+    onEdit
 }) => {
     return (
         <div 
@@ -32,8 +34,19 @@ const Post = ({
                     && 
 
                     <div className="post__buttons">
-                        <FiTrash2 />
-                        <FiEdit />
+                        <span 
+                            className='post__buttons__icons'
+                            onClick={()=>onDelete(id)}
+                        >
+                            <FiTrash2 />
+                        </span>
+
+                        <span 
+                            className='post__buttons__icons'
+                            onClick={()=>onEdit(id)}
+                        >
+                            <FiEdit />
+                        </span>
                     </div>
                 }
 

@@ -29,6 +29,10 @@
   width: 65px;
 }
 
+.post__buttons__icons {
+  cursor: pointer;
+}
+
 .post__main {
   padding: 0 30px;
 }
