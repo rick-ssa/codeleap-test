@@ -9,8 +9,9 @@ const postReducer = (state = [], action) => {
             return state.filter(post => post.id !== action.payload.postId)
 
         case EDITED_POST: 
+            
             return [
-                ...state.filter(post => post.id !== action.payload.newPost.postId),
+                ...state.filter(post => post.id !== action.payload.newPost.id),
                 action.payload.newPost
             ]
         default: 
