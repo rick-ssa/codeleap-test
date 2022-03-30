@@ -25,6 +25,15 @@ const Main = ({posts, user, dispatch})=> {
         dispatch(addPostAction(post))
     }
 
+    const handleOnKeyUp = (event) => {
+        if(
+            (event.code === 'Enter' || event.key === 'Enter') && 
+            (title && content)
+        ) {
+            handleCreatePost()
+        }
+    }
+
     return (
         <div className="main">
             <div className="main__container">
@@ -45,12 +54,14 @@ const Main = ({posts, user, dispatch})=> {
                             placeholder='Type something'
                             onChange = {(e) => {setTitle(e.target.value)}}
                             value = {title}
+                            onKeyUp = {handleOnKeyUp}
                         />
                         <InputText 
                             title='Content'
                             placeholder='Content here'
                             onChange={(e) => {setContent(e.target.value)}}
                             value = {content}
+                            onKeyUp = {handleOnKeyUp}
                             multline
                         />
                     </Dialog>
