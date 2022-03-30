@@ -11,8 +11,6 @@ const transformTime = date => {
     const dayPassed = Math.floor(milisecondsPassed / day)
     const weekPassed = Math.floor(milisecondsPassed / week)
 
-    console.log(milisecondsPassed)
-
     if(minutePassed <= 0)  {
         return 'now'
     }
