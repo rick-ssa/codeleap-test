@@ -1,16 +1,20 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Dialog from '../../components/Dialog'
 import InputText from '../../components/InputText'
 import Modal from '../../components/Modal'
 import Post from '../../components/Post'
 import './styles.css'
 import {connect} from 'react-redux'
-import {addPostAction} from '../../actions'
+import {addPostAction, deletePostAction, editPostAction} from '../../actions'
 
 const Main = ({posts, user, dispatch})=> {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [modalType, setModalType] = useState('')
+    const [editableTitle, setEditableTitle] = useState('')
+    const [editableContent, setEditableContent] = useState('')
+
+    const postRef = useRef(null)
 
     const handleCreatePost = () => {
         const post = {
@@ -32,6 +36,33 @@ const Main = ({posts, user, dispatch})=> {
         ) {
             handleCreatePost()
         }
+    }
+
+    const handleModalDelete = (id) => {
+        setModalType('delete')
+        postRef.current = posts.filter(p=>p.id===id)[0]
+    }
+
+    const handleModalEdit = (id) => {
+        setModalType('edit')
+        postRef.current = posts.filter(p=>p.id===id)[0]
+        setEditableTitle(postRef.current.title)
+        setEditableContent(postRef.current.content)
+    }
+
+    const deletePost = (id) => {
+        dispatch(deletePostAction(id))
+        setModalType(null)
+    }
+
+    const editPost = (post) => {
+        const editedPost = {...post, title: editableTitle, content: editableContent}
+        dispatch(editPostAction(editedPost))
+        setModalType(null)
+    }
+
+    const handleOnClickOut = () => {
+        setModalType(null)
     }
 
     return (
@@ -77,18 +108,21 @@ const Main = ({posts, user, dispatch})=> {
                                 text = {post.content}
                                 showControls = {user === post.username}
                                 marginBottom = '34px'
+                                onDelete={handleModalDelete}
+                                onEdit={handleModalEdit}
                             />
                         ))
                     }
                 </div>
             </div>
 
+
             {
                 modalType
 
                 &&
 
-                <Modal >
+                <Modal onClickOut={handleOnClickOut}>
 
                     {
                         modalType === 'delete' 
@@ -101,13 +135,13 @@ const Main = ({posts, user, dispatch})=> {
                                 {
                                     text: 'Cancel',
                                     simple: true,
-                                    onClick: ()=>console.log('cancel'),
+                                    onClick: ()=>setModalType(null),
                                     marginRight: '16px'
                                 },
                                 {
                                     text: 'OK',
                                     simple: true,
-                                    onClick: ()=>console.log('ok')
+                                    onClick: ()=>deletePost(postRef.current.id)
                                 }
                             ]}
                         />
@@ -119,17 +153,21 @@ const Main = ({posts, user, dispatch})=> {
                             buttons={[{
                                 text: 'save',
                                 active: true,
-                                onClick: ()=>{console.log('save')}
+                                onClick: ()=>{editPost(postRef.current)}
                             }]}
                         >
                             <InputText 
                                 title = 'Title'
                                 placeholder='Title'
+                                onChange={(e) => setEditableTitle(e.target.value)}
+                                value = {editableTitle}
                             />
 
                             <InputText 
                                 title = 'Content'
                                 placeholder='Content'
+                                onChange={(e)=>setEditableContent(e.target.value)}
+                                value = {editableContent}
                                 multline
                             />
                         </Dialog>
