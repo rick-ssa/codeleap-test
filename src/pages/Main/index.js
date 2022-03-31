@@ -92,7 +92,6 @@ const Main = ({posts, user, dispatch})=> {
                             placeholder='Content here'
                             onChange={(e) => {setContent(e.target.value)}}
                             value = {content}
-                            onKeyUp = {handleOnKeyUp}
                             multline
                         />
                     </Dialog>
