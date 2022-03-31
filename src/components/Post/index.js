@@ -1,6 +1,6 @@
 import './styles.css'
 import {FiEdit, FiTrash2} from 'react-icons/fi'
-import {transformTime} from '../../utils'
+import {transformTime} from '../../utils/transformTime'
 
 const Post = ({
     id,
