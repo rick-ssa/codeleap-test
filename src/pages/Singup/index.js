@@ -1,13 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Dialog from '../../components/Dialog'
 import InputText from '../../components/InputText'
 import {connect} from 'react-redux'
 import {singupAction} from '../../actions'
+import {useNavigate} from 'react-router-dom'
 import './styles.css'
 
 
-const Singup = ({dispatch}) => {
+const Singup = ({dispatch, user}) => {
     const [text, setText] = useState('')
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!user) {
+            navigate('/')
+        }
+    },[])
 
     const handleOnChange = (event) => {
         setText(event.target.value)
@@ -15,8 +23,13 @@ const Singup = ({dispatch}) => {
 
     const handleOnKeyUp = (event) => {
         if(event.code === 'Enter' || event.key === 'Enter') {
-            dispatch(singupAction(text))
+            handleOnClick()
         }
+    }
+
+    const handleOnClick = ()=>{
+        dispatch(singupAction(text))
+        navigate('/posts')
     }
 
     return (
@@ -28,7 +41,7 @@ const Singup = ({dispatch}) => {
                         text:'enter', 
                         active: text !== '', 
                         simple: false, 
-                        onClick: ()=>dispatch(singupAction(text))
+                        onClick: handleOnClick
                     }]}
                 >
                     <InputText 
@@ -44,4 +57,9 @@ const Singup = ({dispatch}) => {
     )
 }
 
-export default connect()(Singup)
+const mapStateToProps = state =>{
+    const {user} = state
+    return ({user})
+}
+
+export default connect(mapStateToProps)(Singup)
