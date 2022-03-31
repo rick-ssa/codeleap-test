@@ -2,7 +2,7 @@
 import './App.css';
 import Main from './pages/Main';
 import Singup from './pages/Singup';
-import {connect, MapStateToProps} from 'react-redux'
+import {connect} from 'react-redux'
 
 function App({user}) {
   const logged = Boolean(user)
