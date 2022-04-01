@@ -2,6 +2,7 @@ const SINGUP = 'USER/SINGUP'
 const ADDED_POST = 'POST/ADDED_POST'
 const DELETED_POST = 'POST/DELETED_POST'
 const EDITED_POST = 'POST/EDITED_POST'
+const FETCHED_POST = 'POST/FETCHED_POST'
 
 const singupAction = (user) => ({
     type: SINGUP,
@@ -29,4 +30,9 @@ const editPostAction = (newPost) => ({
     payload: {newPost}
 })
 
-export {singupAction, addPostAction, deletePostAction, editPostAction, SINGUP, ADDED_POST, DELETED_POST, EDITED_POST}
+const fetchPost = (posts) => ({
+    type: FETCHED_POST,
+    payload: {posts}
+})
+
+export {singupAction, addPostAction, deletePostAction, editPostAction, fetchPost, SINGUP, ADDED_POST, DELETED_POST, EDITED_POST, FETCHED_POST}

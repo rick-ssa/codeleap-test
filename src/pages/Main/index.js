@@ -1,11 +1,13 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Dialog from '../../components/Dialog'
 import InputText from '../../components/InputText'
 import Modal from '../../components/Modal'
 import Post from '../../components/Post'
 import './styles.css'
 import {connect} from 'react-redux'
-import {addPostAction, deletePostAction, editPostAction} from '../../actions'
+import {fetchPost} from '../../actions'
+import axios from '../../utils/axios'
+import { useNavigate } from 'react-router-dom'
 
 const Main = ({posts, user, dispatch})=> {
     const [title, setTitle] = useState('')
@@ -13,10 +15,15 @@ const Main = ({posts, user, dispatch})=> {
     const [modalType, setModalType] = useState('')
     const [editableTitle, setEditableTitle] = useState('')
     const [editableContent, setEditableContent] = useState('')
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        user ? getPosts() : navigate("/")
+    },[])
 
     const postRef = useRef(null)
 
-    const handleCreatePost = () => {
+    const handleCreatePost = async () => {
         const post = {
             title,
             username: user,
@@ -25,8 +32,13 @@ const Main = ({posts, user, dispatch})=> {
                 
         setContent('')
         setTitle('')
-        
-        dispatch(addPostAction(post))
+        try {
+            await axios.post('',{...post})
+            getPosts()
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     const handleOnKeyUp = (event) => {
@@ -50,19 +62,41 @@ const Main = ({posts, user, dispatch})=> {
         setEditableContent(postRef.current.content)
     }
 
-    const deletePost = (id) => {
-        dispatch(deletePostAction(id))
-        setModalType(null)
+    const deletePost = async (id) => {
+        try{
+            await axios.delete(`${id}/`)
+            getPosts()
+            setModalType(null)
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
-    const editPost = (post) => {
-        const editedPost = {...post, title: editableTitle, content: editableContent}
-        dispatch(editPostAction(editedPost))
-        setModalType(null)
+    const editPost = async (id) => {
+        try{
+            await axios.patch(`${id}/`,{title: editableTitle, content: editableContent})
+            getPosts()
+            setModalType(null)
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     const handleOnClickOut = () => {
         setModalType(null)
+    }
+
+    const getPosts = async ()=> {
+        try {
+            const response = await axios()
+            const newPosts = response.data.results
+            dispatch(fetchPost(newPosts))
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -97,9 +131,15 @@ const Main = ({posts, user, dispatch})=> {
                     </Dialog>
 
                     {
+                        posts.length !== 0
+
+                        &&
+
                         posts
                         .sort((first, second)=>{
-                            return second.created_datetime.getTime() - first.created_datetime.getTime()
+                            const first_date = new Date(first.created_datetime)
+                            const second_date = new Date(second.created_datetime)
+                            return second_date.getTime() - first_date.getTime()
                         })
                         .map(post=>(
                             <Post
@@ -107,7 +147,7 @@ const Main = ({posts, user, dispatch})=> {
                                 id = {post.id}
                                 title ={post.title}
                                 creator ={`@${post.username}`}
-                                time = {post.created_datetime}
+                                time = {new Date(post.created_datetime)}
                                 text = {post.content}
                                 showControls = {user === post.username}
                                 marginBottom = '34px'
@@ -156,7 +196,7 @@ const Main = ({posts, user, dispatch})=> {
                             buttons={[{
                                 text: 'save',
                                 active: true,
-                                onClick: ()=>{editPost(postRef.current)}
+                                onClick: ()=>{editPost(postRef.current.id)}
                             }]}
                         >
                             <InputText 
@@ -185,7 +225,7 @@ const Main = ({posts, user, dispatch})=> {
 
 const mapStateToProps = (state) => {
     const {posts, user} = state
-    return ({posts,user})
+    return ({posts, user})
 }
 
 export default connect(mapStateToProps)(Main)
