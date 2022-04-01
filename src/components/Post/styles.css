@@ -3,6 +3,8 @@
   flex-direction: column;
   border: 1px solid #999;
   background-color: white;
+  opacity: 0;
+  animation: show 500ms 100ms forwards;
 }
 
 .post__header {
@@ -51,4 +53,10 @@
   font-size: 18px;
   line-height: 23px;
   text-align: left;
+}
+
+@keyframes show {
+  100% {
+    opacity: 1;
+  }
 }
