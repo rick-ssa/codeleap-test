@@ -60,3 +60,24 @@
     opacity: 1;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .post {
+    overflow-x: hidden;
+  }
+  .post__main,
+  .post__header {
+    padding: 0 10px;
+  }
+  .post__info {
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  .post__info__creator {
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
