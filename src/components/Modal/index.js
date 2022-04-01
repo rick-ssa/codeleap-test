@@ -14,7 +14,7 @@ const Modal = ({children, onClickOut}) => {
     return ReactDOM.createPortal(
         <div 
             className="modal__overlay"
-            onClick = {handleOnClickOUt}
+            onMouseDown = {handleOnClickOUt}
         >
             <div className="modal">
                 {children}
